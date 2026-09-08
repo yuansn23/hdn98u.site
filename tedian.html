@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品特點 - 探索書籍的力量，點亮你的未來</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e3a8a',
+                        secondary: '#f59e0b',
+                        accent: '#059669'
+                    },
+                    fontFamily: {
+                        'chinese': ['Microsoft JhengHei', 'PingFang TC', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', 'Microsoft JhengHei', 'PingFang TC', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #1e40af 100%);
+        }
+        
+        .gold-gradient {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+        
+        .feature-gradient-1 {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        }
+        
+        .feature-gradient-2 {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        }
+        
+        .feature-gradient-3 {
+            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+        }
+        
+        .feature-gradient-4 {
+            background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+        }
+        
+        .floating-animation {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .scale-on-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .scale-on-hover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .pulse-glow {
+            animation: pulseGlow 2s infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.8); }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo/Brand -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">📚</span>
+                    </div>
+                    <span class="text-xl font-bold text-primary dark:text-blue-400">ChatGPT超級應用</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-300 font-medium">關於我們</a>
+                    <a href="tedian.html" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-300 font-medium">產品特點</a>
+                     
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-gray-700 dark:text-gray-300" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden mt-4 pb-4 border-t border-gray-200 dark:border-gray-700">
+                <div class="space-y-4 pt-4">
+                    <a href="index.html#about-us" class="block text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-300 font-medium" onclick="toggleMobileMenu()">關於我們</a>
+                    <a href="index.html#product-features" class="block text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-300 font-medium" onclick="toggleMobileMenu()">產品特點</a>
+                    <button onclick="h2()" class="w-full bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full font-medium transition-all duration-300">
+                        免費領取
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg pt-24 pb-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-10"></div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 floating-animation opacity-20">
+            <div class="w-16 h-20 bg-yellow-400 rounded-lg transform rotate-12"></div>
+        </div>
+        <div class="absolute top-40 right-20 floating-animation opacity-20" style="animation-delay: 1s;">
+            <div class="w-12 h-16 bg-green-400 rounded-lg transform -rotate-12"></div>
+        </div>
+        <div class="absolute bottom-20 left-1/4 floating-animation opacity-20" style="animation-delay: 2s;">
+            <div class="w-14 h-18 bg-purple-400 rounded-lg transform rotate-6"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-5xl mx-auto text-center fade-in">
+                <div class="mb-8">
+                    <span class="text-7xl block mb-6 floating-animation">📚</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                    探索書籍的力量，<br>
+                    <span class="text-yellow-300">點亮你的未來</span>
+                </h1>
+                <div class="inline-block bg-white/20 backdrop-blur-sm rounded-2xl px-8 py-4 mb-8">
+                    <p class="text-xl md:text-2xl text-white font-medium">
+                        📚 你的知識基地，專注於高品質閱讀體驗
+                    </p>
+                </div>
+                <p class="text-lg md:text-xl text-blue-100 leading-relaxed max-w-4xl mx-auto">
+                    我們的產品不僅僅是書，更是你個人成長、職場突破與文化連結的最佳夥伴
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Introduction -->
+    <section id="intro" class="py-20 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-8 text-primary dark:text-blue-400">
+                        為什麼選擇我們的書籍？
+                    </h2>
+                    <div class="w-24 h-1 bg-secondary mx-auto mb-8"></div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                    <div class="fade-in">
+                        <div class="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-700 dark:to-gray-600 p-8 rounded-2xl">
+                            <div class="flex items-center mb-6">
+                                <span class="text-5xl mr-4">🎯</span>
+                                <h3 class="text-2xl font-bold text-primary dark:text-blue-400">為你量身打造</h3>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
+                                無論你是追求技能提升的職場菁英，還是在異鄉奮鬥的遊子，我們的書籍都能為你的生活注入靈感與力量。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in">
+                        <div class="space-y-6">
+                            <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900 dark:to-emerald-900 p-6 rounded-xl scale-on-hover">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-3xl mr-4">💼</span>
+                                    <h4 class="text-xl font-bold text-green-700 dark:text-green-300">職場菁英</h4>
+                                </div>
+                                <p class="text-gray-700 dark:text-gray-300">
+                                    追求技能提升的專業人士，在競爭激烈的職場中尋求突破。
+                                </p>
+                            </div>
+                            
+                            <div class="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900 dark:to-orange-900 p-6 rounded-xl scale-on-hover">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-3xl mr-4">🌍</span>
+                                    <h4 class="text-xl font-bold text-yellow-700 dark:text-yellow-300">海外遊子</h4>
+                                </div>
+                                <p class="text-gray-700 dark:text-gray-300">
+                                    在異鄉奮鬥的華人，需要文化連結與實用指導的支持。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Four Features Section -->
+    <section id="features" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-8 text-primary dark:text-blue-400">
+                        四大核心特點
+                    </h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-300">
+                        每一個特點都為你的成功之路增添力量
+                    </p>
+                </div>
+                
+                <div class="space-y-16">
+                    <!-- Feature 1 -->
+                    <div class="fade-in">
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden scale-on-hover">
+                            <div class="grid md:grid-cols-2 gap-0">
+                                <div class="feature-gradient-1 p-12 text-white flex items-center justify-center">
+                                    <div class="text-center">
+                                        <span class="text-6xl block mb-6">1️⃣</span>
+                                        <h3 class="text-3xl font-bold mb-4">精選內容</h3>
+                                        <p class="text-xl">解決你的痛點</p>
+                                    </div>
+                                </div>
+                                <div class="p-12">
+                                    <h4 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6">每一本書都經過嚴格篩選，針對海外華人日常挑戰量身打造：</h4>
+                                    <div class="space-y-4">
+                                        <div class="flex items-start">
+                                            <span class="text-green-500 mr-3 mt-1 text-xl">💼</span>
+                                            <div>
+                                                <h5 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">職場工具書</h5>
+                                                <p class="text-gray-600 dark:text-gray-400">讓你在語言與文化的弱勢中化劣為優，實現職場逆襲。</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start">
+                                            <span class="text-red-500 mr-3 mt-1 text-xl">🏮</span>
+                                            <div>
+                                                <h5 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">文化連結讀物</h5>
+                                                <p class="text-gray-600 dark:text-gray-400">彌補思鄉情懷，用知識維繫根與世界的連接。</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start">
+                                            <span class="text-blue-500 mr-3 mt-1 text-xl">📋</span>
+                                            <div>
+                                                <h5 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">實用指南</h5>
+                                                <p class="text-gray-600 dark:text-gray-400">從移民到求職，提供切實可行的解決方案。</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="fade-in">
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden scale-on-hover">
+                            <div class="grid md:grid-cols-2 gap-0">
+                                <div class="p-12 order-2 md:order-1">
+                                    <h4 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6">讓你在生活與職場中事半功倍：</h4>
+                                    <div class="space-y-4">
+                                        <div class="flex items-start">
+                                            <span class="text-purple-500 mr-3 mt-1 text-xl">💻</span>
+                                            <div>
+                                                <h5 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">電子模板與工具</h5>
+                                                <p class="text-gray-600 dark:text-gray-400">隨書搭配多種實用AI模板，讓你在生活與職場中事半功倍。</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start">
+                                            <span class="text-yellow-500 mr-3 mt-1 text-xl">🃏</span>
+                                            <div>
+                                                <h5 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">黃金指令卡</h5>
+                                                <p class="text-gray-600 dark:text-gray-400">快速解決租房、求職、法律等常見問題，讓書籍成為你的行動指南。</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="feature-gradient-2 p-12 text-white flex items-center justify-center order-1 md:order-2">
+                                    <div class="text-center">
+                                        <span class="text-6xl block mb-6">2️⃣</span>
+                                        <h3 class="text-3xl font-bold mb-4">隨書附贈</h3>
+                                        <p class="text-xl">實用價值最大化</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="fade-in">
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden scale-on-hover">
+                            <div class="grid md:grid-cols-2 gap-0">
+                                <div class="feature-gradient-3 p-12 text-white flex items-center justify-center">
+                                    <div class="text-center">
+                                        <span class="text-6xl block mb-6">3️⃣</span>
+                                        <h3 class="text-3xl font-bold mb-4">全球配送</h3>
+                                        <p class="text-xl">知識無國界</p>
+                                    </div>
+                                </div>
+                                <div class="p-12 flex items-center">
+                                    <div>
+                                        <h4 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6">讓知識的力量觸手可及</h4>
+                                        <div class="bg-purple-50 dark:bg-purple-900 p-6 rounded-xl">
+                                            <div class="flex items-center mb-4">
+                                                <span class="text-3xl mr-4">🌍</span>
+                                                <h5 class="text-xl font-bold text-purple-700 dark:text-purple-300">快速安全送達</h5>
+                                            </div>
+                                            <p class="text-gray-700 dark:text-gray-300 text-lg">
+                                                無論你身在何處，我們都確保書籍快速、安全地送達你的手中，讓知識的力量觸手可及。
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="fade-in">
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden scale-on-hover">
+                            <div class="grid md:grid-cols-2 gap-0">
+                                <div class="p-12 order-2 md:order-1">
+                                    <h4 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6">讓每次閱讀都成為思想的盛宴：</h4>
+                                    <div class="space-y-4">
+                                        <div class="flex items-start">
+                                            <span class="text-orange-500 mr-3 mt-1 text-xl">👥</span>
+                                            <div>
+                                                <h5 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">專屬讀書社群</h5>
+                                                <p class="text-gray-600 dark:text-gray-400">加入專屬讀書社群，與全球讀者共同交流。</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start">
+                                            <span class="text-pink-500 mr-3 mt-1 text-xl">💡</span>
+                                            <div>
+                                                <h5 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">激發靈感</h5>
+                                                <p class="text-gray-600 dark:text-gray-400">激發靈感，讓每次閱讀都成為思想的盛宴。</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="feature-gradient-4 p-12 text-white flex items-center justify-center order-1 md:order-2">
+                                    <div class="text-center">
+                                        <span class="text-6xl block mb-6">4️⃣</span>
+                                        <h3 class="text-3xl font-bold mb-4">社群支持</h3>
+                                        <p class="text-xl">共享智慧</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Summary -->
+    <section id="benefits" class="py-20 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="fade-in">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-8 text-primary dark:text-blue-400">
+                        產品核心價值
+                    </h2>
+                    <div class="w-24 h-1 bg-secondary mx-auto mb-12"></div>
+                    
+                    <div class="bg-gradient-to-r from-blue-50 to-yellow-50 dark:from-gray-700 dark:to-gray-600 p-8 rounded-2xl mb-12">
+                        <p class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-200 leading-relaxed">
+                            我們的產品不僅僅是書，更是你<br>
+                            <span class="text-green-600 dark:text-green-400">個人成長</span>、
+                            <span class="text-blue-600 dark:text-blue-400">職場突破</span>與
+                            <span class="text-purple-600 dark:text-purple-400">文化連結</span><br>
+                            的最佳夥伴
+                        </p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-8 mb-12">
+                        <div class="bg-gradient-to-br from-green-100 to-emerald-100 dark:from-green-900 dark:to-emerald-900 p-6 rounded-xl scale-on-hover">
+                            <span class="text-4xl block mb-4">🚀</span>
+                            <h3 class="text-xl font-bold text-green-700 dark:text-green-300 mb-2">個人成長</h3>
+                            <p class="text-gray-600 dark:text-gray-400">持續學習提升自我</p>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900 dark:to-indigo-900 p-6 rounded-xl scale-on-hover">
+                            <span class="text-4xl block mb-4">💼</span>
+                            <h3 class="text-xl font-bold text-blue-700 dark:text-blue-300 mb-2">職場突破</h3>
+                            <p class="text-gray-600 dark:text-gray-400">實現職業生涯躍進</p>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900 dark:to-pink-900 p-6 rounded-xl scale-on-hover">
+                            <span class="text-4xl block mb-4">🏮</span>
+                            <h3 class="text-xl font-bold text-purple-700 dark:text-purple-300 mb-2">文化連結</h3>
+                            <p class="text-gray-600 dark:text-gray-400">保持根源文化認同</p>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <!-- Main Footer Content -->
+                <div class="text-center mb-8">
+                    <p class="text-lg mb-4">感謝您對我們的支持，期待與您一起分享更多投資智慧！</p>
+                </div>
+                
+              <!-- Policy Links -->
+                <div class="border-t border-gray-700 pt-8">
+                    <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                        <div class="flex flex-wrap justify-center md:justify-start space-x-6 text-sm">
+                            <a href="privacy.html" class="text-gray-400 hover:text-white transition-colors duration-300 underline-offset-4 hover:underline">
+                                隱私政策
+                            </a>
+                            <a href="terms.html" class="text-gray-400 hover:text-white transition-colors duration-300 underline-offset-4 hover:underline">
+                                用戶條款
+                            </a>
+                            <a href="refund.html" class="text-gray-400 hover:text-white transition-colors duration-300 underline-offset-4 hover:underline">
+                                退款政策
+                            </a>
+                        </div>
+                        <div class="text-center md:text-right">
+                            <p class="text-gray-400 text-sm">© 2024  . 版權所有.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode support
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // h2 function for LINE redirect  
+        function h2() {
+            // 這裡可以設置實際的LINE連結
+            gtag_report_conversion('https://lihi.cc/eVvgx');
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
