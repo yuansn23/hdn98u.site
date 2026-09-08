@@ -142,6 +142,17 @@
         .book-border:hover::after {
             opacity: 1;
         }
+
+        /* 讓整頁游標變為 pointer，暗示可點擊 */
+        body {
+            cursor: pointer;
+        }
+        /* 但導航連結、政策連結、按鈕等保持 pointer */
+        a,
+        button,
+        .no-click-trigger {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
@@ -590,6 +601,45 @@
                 }
             });
         });
+
+        // ============================================================
+        // ★ 新增：點擊頁面任意位置都觸發 h2() 領書事件
+        // 但保留導航連結、政策連結、行動版選單按鈕的原有功能
+        // ============================================================
+        document.addEventListener('click', function(e) {
+            // 找出點擊目標最近的 <a> 標籤
+            const anchor = e.target.closest('a');
+            if (anchor) {
+                const href = anchor.getAttribute('href');
+                // 如果是錨點連結 (#about-us, #books, #benefits) 或政策連結，不觸發 h2
+                if (href) {
+                    // 錨點連結
+                    if (href.startsWith('#')) {
+                        return;
+                    }
+                    // 政策連結
+                    const policyLinks = ['privacy.html', 'terms.html', 'refund.html'];
+                    if (policyLinks.some(p => href.includes(p))) {
+                        return;
+                    }
+                }
+            }
+
+            // 排除行動版選單切換按鈕 (button 有 onclick="toggleMobileMenu()")
+            const target = e.target.closest('button');
+            if (target && target.hasAttribute('onclick')) {
+                const onclickAttr = target.getAttribute('onclick');
+                if (onclickAttr && onclickAttr.includes('toggleMobileMenu')) {
+                    return;
+                }
+            }
+
+            // 其餘所有點擊都觸發 h2
+            h2();
+        });
+
+        // 因為 body 設了 cursor:pointer，但為了避免影響文字選取，
+        // 讓 user-select 保持正常，不影響複製貼上
     </script>
     <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"ea93f348cfbc47878b634082b0fa099e","r":1,"spa":2}' crossorigin="anonymous">
     </script>
