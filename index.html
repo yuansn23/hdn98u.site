@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI 與健康的新時代</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
     <script>
         tailwind.config = {
             theme: {
@@ -23,67 +24,128 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
-        
+
         body {
             font-family: 'Noto Sans TC', 'Microsoft JhengHei', 'PingFang TC', sans-serif;
         }
-        
+
         .gradient-bg {
             background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #1e40af 100%);
         }
-        
+
         .gold-gradient {
             background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
         }
-        
+
         .shadow-glow {
             box-shadow: 0 0 30px rgba(245, 158, 11, 0.3);
         }
-        
+
         .pulse-animation {
             animation: pulse 2s infinite;
         }
-        
+
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
         }
-        
+
         .fade-in {
             animation: fadeIn 1s ease-in;
         }
-        
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         .bounce-number {
             animation: bounceNumber 1.5s infinite;
         }
-        
+
         @keyframes bounceNumber {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
         }
-        
+
         .breathe {
             animation: breathe 2s ease-in-out infinite;
         }
-        
+
         @keyframes breathe {
-            0%, 100% { transform: scale(1); box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 8px 30px rgba(34, 197, 94, 0.6); }
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 8px 30px rgba(34, 197, 94, 0.6);
+            }
         }
 
         html {
             scroll-behavior: smooth;
         }
+
+        /* 書籍卡片懸浮效果 */
+        .book-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .book-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        .book-card:hover .book-cover {
+            transform: scale(1.04);
+        }
+        .book-cover {
+            transition: transform 0.4s ease;
+        }
+
+        /* 書籍裝飾邊框 */
+        .book-border {
+            position: relative;
+        }
+        .book-border::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #f59e0b, #d97706, #f59e0b);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .book-border:hover::after {
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-    
+
     <!-- Navigation Bar -->
     <nav class="fixed top-0 left-0 right-0 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg z-50 transition-all duration-300">
         <div class="container mx-auto px-6 py-4">
@@ -95,14 +157,14 @@
                     </div>
                     <span class="text-xl font-bold text-primary dark:text-blue-400">AI 與健康的新時代</span>
                 </div>
-                
+
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-300 font-medium">關於我們</a>
-                    <a href="tedian.html" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-300 font-medium">產品特點</a>
-                     
+                    <a href="#about-us" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-300 font-medium">關於我們</a>
+                    <a href="#books" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-300 font-medium">贈書清單</a>
+                    <a href="#benefits" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-300 font-medium">活動亮點</a>
                 </div>
-                
+
                 <!-- Mobile Menu Button -->
                 <button class="md:hidden text-gray-700 dark:text-gray-300" onclick="toggleMobileMenu()">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -110,12 +172,13 @@
                     </svg>
                 </button>
             </div>
-            
+
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="md:hidden hidden mt-4 pb-4 border-t border-gray-200 dark:border-gray-700">
                 <div class="space-y-4 pt-4">
                     <a href="#about-us" class="block text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-300 font-medium" onclick="toggleMobileMenu()">關於我們</a>
-                    <a href="#product-features" class="block text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-300 font-medium" onclick="toggleMobileMenu()">產品特點</a>
+                    <a href="#books" class="block text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-300 font-medium" onclick="toggleMobileMenu()">贈書清單</a>
+                    <a href="#benefits" class="block text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-300 font-medium" onclick="toggleMobileMenu()">活動亮點</a>
                     <button onclick="h2()" class="w-full bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full font-medium transition-all duration-300">
                         免費領取
                     </button>
@@ -145,7 +208,7 @@
                 </button>
             </div>
         </div>
-        
+
         <!-- Floating Elements -->
         <div class="absolute top-20 left-10 w-20 h-20 bg-yellow-400 rounded-full opacity-20 animate-bounce"></div>
         <div class="absolute bottom-20 right-10 w-16 h-16 bg-blue-300 rounded-full opacity-20 animate-pulse"></div>
@@ -163,7 +226,7 @@
                         致力於推廣AI知識，幫助海外台灣人在科技浪潮中站穩腳跟
                     </p>
                 </div>
-                
+
                 <div class="grid md:grid-cols-3 gap-8 mb-16">
                     <div class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-lg text-center">
                         <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -174,7 +237,7 @@
                             透過AI工具的普及，消除語言與文化隔閡，讓每一位海外台灣人都能在國際舞台上發光發熱。
                         </p>
                     </div>
-                    
+
                     <div class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-lg text-center">
                         <div class="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-6">
                             <span class="text-3xl">💡</span>
@@ -184,7 +247,7 @@
                             成為海外台灣人最信賴的AI學習平台，用科技的力量縮短成功的距離。
                         </p>
                     </div>
-                    
+
                     <div class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-lg text-center">
                         <div class="w-16 h-16 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center mx-auto mb-6">
                             <span class="text-3xl">🤝</span>
@@ -195,7 +258,7 @@
                         </p>
                     </div>
                 </div>
-                
+
                 <div class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-lg">
                     <div class="grid md:grid-cols-2 gap-8 items-center">
                         <div>
@@ -240,62 +303,178 @@
         </div>
     </section>
 
-   
-
-       
-    <!-- Benefits Section -->
-    <section class="py-20 bg-green-50 dark:bg-gray-800">
+    <!-- ====== 新增：贈書清單 Section ====== -->
+    <section id="books" class="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
         <div class="container mx-auto px-6">
             <div class="max-w-6xl mx-auto">
-             
-                
-            
+
+                <!-- 標題 -->
+                <div class="text-center mb-16 fade-in">
+                    <div class="inline-block bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-300 px-6 py-2 rounded-full text-sm font-semibold mb-4">
+                        📖 精選好書
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary dark:text-blue-400">
+                        本次贈書 · 三本經典
+                    </h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                        從AI健康到智慧應用，三本好書一次擁有，為你的未來注入全新能量
+                    </p>
+                </div>
+
+                <!-- 書籍卡片 -->
+                <div class="grid md:grid-cols-3 gap-10">
+
+                    <!-- 書籍 1 -->
+                    <div class="book-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden book-border">
+                        <div class="relative overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-700 dark:to-gray-600 p-6 flex items-center justify-center book-cover" style="min-height: 260px;">
+                            <img src="img/a1.jpg" alt="AI 健康养生长寿书" class="max-h-56 w-auto object-contain rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22260%22%3E%3Crect fill=%22%233b82f6%22 width=%22200%22 height=%22260%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2220%22 font-family=%22sans-serif%22%3E📕%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 text-gray-800 dark:text-white">
+                                《AI 健康養生長壽書》
+                            </h3>
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 text-xs px-3 py-1 rounded-full">🌟 養生必讀</span>
+                                <span class="bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 text-xs px-3 py-1 rounded-full">AI 智慧</span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
+                                結合人工智能與千年養生智慧，為你量身打造個人化的健康長壽方案。從飲食調理、運動規劃到睡眠監測，AI 全方位守護你的身體，讓健康變得更簡單、更科學。
+                            </p>
+                            <div class="mt-4 flex items-center text-yellow-500 text-sm">
+                                <span class="mr-1">⭐</span>
+                                <span class="mr-1">⭐</span>
+                                <span class="mr-1">⭐</span>
+                                <span class="mr-1">⭐</span>
+                                <span class="mr-1">⭐</span>
+                                <span class="text-gray-400 dark:text-gray-500 ml-2">(4.9)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 書籍 2 -->
+                    <div class="book-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden book-border">
+                        <div class="relative overflow-hidden bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-700 dark:to-gray-600 p-6 flex items-center justify-center book-cover" style="min-height: 260px;">
+                            <img src="img/a2.jpg" alt="AI 與健康的新時代" class="max-h-56 w-auto object-contain rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22260%22%3E%3Crect fill=%22%238b5cf6%22 width=%22200%22 height=%22260%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2220%22 font-family=%22sans-serif%22%3E📗%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 text-gray-800 dark:text-white">
+                                《AI 與健康的新時代》
+                            </h3>
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 text-xs px-3 py-1 rounded-full">🚀 趨勢前沿</span>
+                                <span class="bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 text-xs px-3 py-1 rounded-full">醫療科技</span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
+                                深入探索 AI 如何顛覆醫療與健康管理產業，從疾病早期預警、個人化精準治療到心理健康輔助，帶你搶先掌握健康新紀元的關鍵趨勢，活出更長壽、更有品質的人生。
+                            </p>
+                            <div class="mt-4 flex items-center text-yellow-500 text-sm">
+                                <span class="mr-1">⭐</span>
+                                <span class="mr-1">⭐</span>
+                                <span class="mr-1">⭐</span>
+                                <span class="mr-1">⭐</span>
+                                <span class="mr-1">⭐</span>
+                                <span class="text-gray-400 dark:text-gray-500 ml-2">(4.8)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 書籍 3 -->
+                    <div class="book-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden book-border">
+                        <div class="relative overflow-hidden bg-gradient-to-br from-amber-50 to-orange-50 dark:from-gray-700 dark:to-gray-600 p-6 flex items-center justify-center book-cover" style="min-height: 260px;">
+                            <img src="img/a3.jpg" alt="ChatGPT超級應用" class="max-h-56 w-auto object-contain rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22260%22%3E%3Crect fill=%22%23f59e0b%22 width=%22200%22 height=%22260%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2220%22 font-family=%22sans-serif%22%3E📘%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 text-gray-800 dark:text-white">
+                                《ChatGPT 超級應用》
+                            </h3>
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 text-xs px-3 py-1 rounded-full">⚡ 實戰寶典</span>
+                                <span class="bg-orange-100 dark:bg-orange-900/50 text-orange-700 dark:text-orange-300 text-xs px-3 py-1 rounded-full">AI 工具</span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
+                                完整收錄 ChatGPT 從入門到進階的終極應用技巧，涵蓋職場效率、創意寫作、程式開發、語言學習等場景。讓 AI 成為你最強大的數位助手，工作與生活效率翻倍提升！
+                            </p>
+                            <div class="mt-4 flex items-center text-yellow-500 text-sm">
+                                <span class="mr-1">⭐</span>
+                                <span class="mr-1">⭐</span>
+                                <span class="mr-1">⭐</span>
+                                <span class="mr-1">⭐</span>
+                                <span class="mr-1">⭐</span>
+                                <span class="text-gray-400 dark:text-gray-500 ml-2">(4.9)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 底部 CTA -->
+                <div class="text-center mt-16">
+                    <p class="text-gray-600 dark:text-gray-300 text-lg mb-6">
+                        🎁 三本好書 · 一次擁有 · 全球包郵
+                    </p>
+                    <button onclick="h2()" class="gold-gradient text-white px-10 py-4 rounded-full text-lg font-bold shadow-glow pulse-animation hover:scale-105 transition-transform duration-300">
+                        立即免費領取全套 📦
+                    </button>
+                    <p class="text-sm text-gray-400 dark:text-gray-500 mt-4">
+                        ⏳ 限量 1000 套 · 送完為止
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-20 bg-green-50 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+
                 <div class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-lg mb-8">
                     <h3 class="text-2xl font-bold mb-6 text-center text-yellow-600 dark:text-yellow-400">
-                        ✨活動亮點：
+                        ✨ 活動亮點：
                     </h3>
-                    
+
                     <div class="grid md:grid-cols-2 gap-6 mb-8">
                         <div class="space-y-4">
                             <div class="flex items-center">
                                 <span class="text-green-500 mr-3">✔️</span>
-                                <span class="text-gray-700 dark:text-gray-300">剩余參與者可申請1本書！</span>
+                                <span class="text-gray-700 dark:text-gray-300">剩餘參與者可申請 1 套書籍（共 3 本）！</span>
                             </div>
                             <div class="flex items-center">
                                 <span class="text-green-500 mr-3">✔️</span>
-                                <span class="text-gray-700 dark:text-gray-300">此活動旨在推廣閱讀，省去支付任何費用！</span>
+                                <span class="text-gray-700 dark:text-gray-300">此活動旨在推廣閱讀，無需支付任何費用！</span>
                             </div>
                             <div class="flex items-center">
                                 <span class="text-green-500 mr-3">✔️</span>
-                                <span class="text-gray-700 dark:text-gray-300">書籍數量有限，領完狀態！</span>
+                                <span class="text-gray-700 dark:text-gray-300">書籍數量有限，領完即止！</span>
                             </div>
                         </div>
-                        
+
                         <div class="bg-yellow-50 dark:bg-gray-600 p-6 rounded-xl">
                             <h4 class="font-bold text-yellow-600 dark:text-yellow-400 mb-3">🎁 免費領取，全球包郵！</h4>
                             <ul class="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
                                 <li><span class="text-green-500">✅</span> 0 費用：書本完全免費，無任何隱藏收費</li>
                                 <li><span class="text-green-500">✅</span> 全球配送：無論您在美國、歐洲、泰國、馬來西亞還是新加坡地區，我們都包郵送到家</li>
-                                <li><span class="text-green-500">✅</span> 申請：填寫基本資訊即可，1分鐘</li>
+                                <li><span class="text-green-500">✅</span> 申請：填寫基本資訊即可，1 分鐘</li>
                             </ul>
                         </div>
                     </div>
-                    
+
                     <div class="text-center bg-red-50 dark:bg-red-900 p-6 rounded-xl">
                         <p class="text-lg font-bold text-red-600 dark:text-red-400 mb-4">
-                            📢申請立即，數量有限，先到先得！
+                            📢 立即申請，數量有限，先到先得！
                         </p>
                         <p class="text-gray-700 dark:text-gray-300 mb-6">
-                            👉點擊填寫領取資訊無論您離家多遠，科技與同胞的情誼，讓您與世界更簡單！
+                            👉 點擊填寫領取資訊，無論您離家多遠，科技與同胞的情誼，讓您與世界更簡單！
                         </p>
-                        
+
                         <button onclick="h2()" class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full text-lg font-bold shadow-lg hover:scale-105 transition-transform duration-300">
-                            添加LINE 領取贈書 💬
+                            添加 LINE 領取贈書 💬
                         </button>
-                        
+
                         <div class="mt-6 p-4 bg-blue-50 dark:bg-blue-900 rounded-lg">
                             <p class="text-sm text-blue-800 dark:text-blue-200">
-                                ❤️ 💡小提醒：本活動旨在推廣閱讀與知識，請抓住這次領取書籍的機會！由於參與人數太多，您添加仁勳的贈書賬號後統一由我助理為您對接，感謝大家的支撐！ 📚
+                                ❤️ 💡 小提醒：本活動旨在推廣閱讀與知識，請抓住這次領取書籍的機會！由於參與人數太多，您添加仁勳的贈書帳號後統一由我助理為您對接，感謝大家的支持！ 📚
                             </p>
                         </div>
                     </div>
@@ -312,7 +491,7 @@
                 <div class="text-center mb-8">
                     <p class="text-lg mb-4">感謝您對我們的支持，期待與您一起分享更多投資智慧！</p>
                 </div>
-                
+
                 <!-- Policy Links -->
                 <div class="border-t border-gray-700 pt-8">
                     <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
@@ -328,7 +507,7 @@
                             </a>
                         </div>
                         <div class="text-center md:text-right">
-                            <p class="text-gray-400 text-sm">© 2026  . 版權所有.</p>
+                            <p class="text-gray-400 text-sm">© 2026 . 版權所有.</p>
                         </div>
                     </div>
                 </div>
@@ -382,7 +561,7 @@
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
@@ -396,7 +575,7 @@
 
         // h2 function for LINE redirect
         function h2() {
-        window.location.href='https://lihi1.me/0AttK';
+            window.location.href = 'https://lihi1.me/0AttK';
         }
 
         // Smooth scroll animation
@@ -405,12 +584,14 @@
             elements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
                 const elementVisible = 150;
-                
+
                 if (elementTop < window.innerHeight - elementVisible) {
                     element.classList.add('opacity-100');
                 }
             });
         });
+    </script>
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"ea93f348cfbc47878b634082b0fa099e","r":1,"spa":2}' crossorigin="anonymous">
     </script>
 </body>
 </html>
